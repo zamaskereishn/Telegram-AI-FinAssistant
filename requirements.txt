@@ -1,0 +1,32 @@
+# Telegram Bot
+python-telegram-bot==20.7
+python-telegram-bot[job-queue]
+
+# Web Scraping
+beautifulsoup4==4.12.2
+requests==2.31.0
+lxml==4.9.3
+selenium==4.15.2
+webdriver-manager==4.0.1
+
+# LLM
+openai~=2.7.2
+
+# Database
+psycopg2-binary==2.9.9
+sqlalchemy==2.0.23
+
+# Data Processing
+pandas==2.1.3
+feedparser==6.0.10
+
+# Utils
+python-dotenv==1.0.0
+pytz==2023.3
+schedule==1.2.0
+aiohttp==3.9.1
+python-dateutil==2.8.2
+
+# Logging
+loguru==0.7.2
+openai~=2.7.2

@@ -1,0 +1,36 @@
+version: '3.8'
+services:
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: finbot_user
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: finbot_db
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    networks:
+      - finnet
+
+  bot:
+    build: .
+    depends_on:
+      - db
+    environment:
+      - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN}
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - GEMINI_MODEL=${GEMINI_MODEL}
+      - DATABASE_URL=${DATABASE_URL}
+      - ADMIN_IDS=${ADMIN_IDS}
+      - TIMEZONE=${TIMEZONE}
+      - DIGEST_HOUR=${DIGEST_HOUR}
+      - DIGEST_MINUTE=${DIGEST_MINUTE}
+    volumes:
+      - ./:/app
+    networks:
+      - finnet
+
+volumes:
+  db_data:
+
+networks:
+  finnet:
