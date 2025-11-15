@@ -13,7 +13,7 @@ The bot’s primary capability is generating a complete financial digest from do
 ✔ Digest Pipeline:
 
 Web scraping using:
-
+\`\`\`bash
 requests + BeautifulSoup4 + lxml
 
 selenium + webdriver-manager for dynamic pages
@@ -57,6 +57,7 @@ model
 JSON source metadata
 
 timestamps
+\`\`\`
 
 Automatic daily sending
 via Telegram JobQueue at a scheduled time.
@@ -140,7 +141,7 @@ answers questions related to finance, banking, macroeconomics
 rejects non-financial questions
 
 logs all queries in PostgreSQL
-
+\`\`\`bash
 🧩 Project Structure
 ├── bot.py                     # Telegram bot commands & handlers
 ├── scraper.py                 # Web-scraper system
@@ -154,15 +155,16 @@ logs all queries in PostgreSQL
 │   └── docker-compose.yml
 ├── requirements.txt  
 └── .env.example               # Example environment variables
-
+\`\`\`
 🐳 Docker Support
 
 The project can run fully inside Docker containers — including scraping, Selenium, PostgreSQL, and the bot worker.
 
 1. Build the Docker image
+\`\`\`bash
 docker build -t financial-digest-bot .
-
-2. Run the container
+\`\`\`
+3. Run the container
 docker run --env-file .env financial-digest-bot
 
 🐳 docker-compose (Recommended)
@@ -178,6 +180,7 @@ optional pgAdmin
 optional Selenium Chrome driver (if needed)
 
 Example docker-compose.yml:
+\`\`\`yaml  
 
 version: "3.9"
 
@@ -208,25 +211,27 @@ volumes:
 
 Start everything
 docker compose up -d
-
+\`\`\`
 ⚙️ Manual Installation (non-Docker)
 1. Install dependencies
+\`\`\`bash
 pip install -r requirements.txt
-
-2. Set environment variables
+\`\`\`
+3. Set environment variables
 
 Create .env:
-
+\`\`\`bash
 TELEGRAM_BOT_TOKEN=
 OPENAI_API_KEY=
 DATABASE_URL=postgresql+psycopg2://user:password@host/db
 TIMEZONE=Asia/Almaty
 DIGEST_HOUR=9
 DIGEST_MINUTE=0
-
+\`\`\`
 3. Run
+\`\`\`bash
 python main.py
-
+\`\`\`
 🗄 Database Overview
 
 Tables include:
